@@ -1,0 +1,11 @@
+version: "2"
+services:
+  server:
+    build: .
+    environment:
+      - NODE_ENV=production
+      - PORT=5150
+    ports:
+      - 5150:5150
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

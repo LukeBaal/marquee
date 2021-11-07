@@ -1,23 +1,34 @@
 {
-  "name": "svelte-app",
+  "name": "marquee",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --no-clear"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "docker": "node docker-api.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeBaal/marquee.git"
+  },
+  "keywords": [],
+  "author": "Luke Baal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukeBaal/marquee/issues"
+  },
+  "homepage": "https://github.com/LukeBaal/marquee#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.9.0",
+    "sqlite3": "^5.0.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "svelte": "^3.0.0"
-  },
-  "dependencies": {
-    "sirv-cli": "^1.0.0"
+    "nodemon": "^2.0.14"
   }
 }
