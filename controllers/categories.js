@@ -1,5 +1,6 @@
 const Category = require('../model/Category');
-
+const { v4 } = require('uuid');
+const uuidv4 = v4;
 
 // @desc  Get all categories
 // @route GET /api/v1/categories
@@ -27,6 +28,7 @@ exports.addCategory = async (req, res, _next) => {
     }
 
     let newCategory = {
+      id: uuidv4(),
       name,
       icon,
       iconType

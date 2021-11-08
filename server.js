@@ -2,11 +2,10 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const { connectDB, sequelize } = require('./db');
+const cors = require('cors');
 const applications = require('./routes/applications');
 const categories = require('./routes/categories');
 const associateModels = require('./model/associateModels');
-
-const getDockerContainers = require('./controllers/docker');
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -15,6 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -33,8 +33,6 @@ app.use('/api/v1/categories', categories);
   await connectDB();
   associateModels();
   await sequelize.sync();
-
-  await getDockerContainers();
 
   const PORT = process.env.PORT || 5000;
   app.listen(

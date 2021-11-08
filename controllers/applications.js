@@ -1,16 +1,25 @@
 const Application = require('../model/Application');
 const Category = require('../model/Category');
-
+const getDockerContainers = require('../controllers/docker');
+const { v4 } = require('uuid');
+const uuidv4 = v4;
 
 // @desc  Get all applications
 // @route GET /api/v1/applications
 // @access Public
 exports.getAllApplications = async (req, res, _next) => {
   try {
-    const applications = await Application.findAll({
-      include: Category
+    let containers = await getDockerContainers();
+
+    let applications = await Application.findAll({
+      include: {
+        model: Category,
+        attributes: ['name']
+      },
+      attributes: ['id', 'name', 'url', 'icon', 'iconType', 'tag', 'active', 'hidden']
     });
-    res.status(200).json({ success: true, data: applications });
+
+    res.status(200).json({ success: true, data: applications.concat(containers) });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, reason: "Unknown error has occured" });
@@ -51,6 +60,7 @@ exports.addApplication = async (req, res, _next) => {
     }
 
     let newApplication = {
+      id: uuidv4(),
       name,
       url,
       icon,

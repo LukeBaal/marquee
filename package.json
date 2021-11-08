@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js",
-    "docker": "node docker-api.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "sequelize": "^6.9.0",

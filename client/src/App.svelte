@@ -1,30 +1,43 @@
 <script>
-	export let name;
+	import { onMount } from 'svelte';
+import { append } from 'svelte/internal';
+	import { ApplicationStore, initApplicationStore } from './stores/applications';
+	import { ThemeStore } from './stores/theme';
+
+	$: cssVarStyles = Object.entries($ThemeStore)
+		.map(([key, value]) => `--${key}:${value}`)
+		.join(';');
+
+	window.document.body.style.background = $ThemeStore.background;
+	window.document.body.style.color = $ThemeStore.text;
+
+	onMount(() => {
+		initApplicationStore();
+	});
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+<main style={cssVarStyles}>
+	<h1>Hello</h1>
+	<div class="applications-container">
+		{#each $ApplicationStore as app (app.id)}
+			<div class="container">
+				<h3>{app.name}</h3>
+				<a href={app.url} style="text-decoration: none; color: var(--text)" target="_blank">{app.url}</a>
+			</div>
+		{/each}
+	</div>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+.applications-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: masonry;
+}
+.container {
+	background: var(--secondary);
+	margin: 1em;
+	padding: 1em;
+	border-radius: 10px;
+}
 </style>
