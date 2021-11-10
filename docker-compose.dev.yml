@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/home/node/app
       - /var/run/docker.sock:/var/run/docker.sock
+      - ../pi-hosted/images:/images
     ports:
       - 5150:5150
     command: "npm run start"

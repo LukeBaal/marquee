@@ -1,8 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
-import { append } from 'svelte/internal';
-	import { ApplicationStore, initApplicationStore } from './stores/applications';
-	import { ThemeStore } from './stores/theme';
+	import ApplicationGrid from './components/ApplicationGrid.svelte';
+  import { ThemeStore } from './stores/theme';
 
 	$: cssVarStyles = Object.entries($ThemeStore)
 		.map(([key, value]) => `--${key}:${value}`)
@@ -10,34 +8,21 @@ import { append } from 'svelte/internal';
 
 	window.document.body.style.background = $ThemeStore.background;
 	window.document.body.style.color = $ThemeStore.text;
-
-	onMount(() => {
-		initApplicationStore();
-	});
 </script>
 
-<main style={cssVarStyles}>
-	<h1>Hello</h1>
-	<div class="applications-container">
-		{#each $ApplicationStore as app (app.id)}
-			<div class="container">
-				<h3>{app.name}</h3>
-				<a href={app.url} style="text-decoration: none; color: var(--text)" target="_blank">{app.url}</a>
-			</div>
-		{/each}
-	</div>
+<main class="main-container" style={cssVarStyles}>
+	<h1>Good Morning!</h1>
+	<ApplicationGrid />
 </main>
 
 <style>
-.applications-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: masonry;
+:global(body) {
+	font-family: Roboto,sans-serif;
 }
-.container {
-	background: var(--secondary);
-	margin: 1em;
-	padding: 1em;
-	border-radius: 10px;
+
+.main-container {
+	margin: 2em;
+	margin-top: 5em;
+	border-top: 2px solid var(--secondary);
 }
 </style>

@@ -26,6 +26,8 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/', (_req, res) => res.status(200).json({ success: true, message: 'Hello'}));
 
+app.use('/assets', express.static('/images'));
+
 app.use('/api/v1/applications', applications);
 app.use('/api/v1/categories', categories);
 
