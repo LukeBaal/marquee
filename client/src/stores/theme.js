@@ -10,5 +10,5 @@ export const ThemeStore = writable({
   primary: "#698f3f",
   text: "#fbfaf8",
   'background-light': "#e7decd",
-  secondary: "#804e49"
+  secondary: "#dd8981"
 });

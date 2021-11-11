@@ -1,5 +1,4 @@
 const axios = require('axios');
-const e = require('express');
 
 const getDockerContainers = async () => {
   try {

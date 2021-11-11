@@ -6,6 +6,7 @@ services:
     environment:
       - NODE_ENV=dev
       - PORT=5150
+      - USE_DOCKER=true
     volumes:
       - ./:/home/node/app
       - /var/run/docker.sock:/var/run/docker.sock

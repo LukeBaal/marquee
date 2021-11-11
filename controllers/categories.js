@@ -72,7 +72,7 @@ exports.updateCategory = async (req, res, _next) => {
     if (numUpdated == 0) {
       res.status(400).json({ success: false, reason: 'Invalid categoryId' });
     } else {
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, data: newValues });
     }
   } catch (err) {
     console.error(err);
@@ -101,7 +101,7 @@ exports.deleteCategory = async (req, res, _next) => {
     if (numDeleted == 0) {
       res.status(400).json({ success: false, reason: 'Invalid categoryId' });
     } else {
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, data: id });
     }
   } catch (err) {
     console.error(err);

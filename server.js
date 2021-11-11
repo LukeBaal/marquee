@@ -36,7 +36,7 @@ app.use('/api/v1/categories', categories);
   associateModels();
   await sequelize.sync();
 
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5150;
   app.listen(
     PORT,
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)

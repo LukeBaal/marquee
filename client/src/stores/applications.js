@@ -6,7 +6,7 @@ export const ApplicationStore = writable([]);
 
 export const initApplicationStore = async () => {
   try {
-    const res = await axios.get(`${API_PREFIX}/applications`);
+    const res = await axios.get(`${API_PREFIX}/api/v1/applications`);
     ApplicationStore.set(res.data.data);
   } catch (err) {
     console.error(err);

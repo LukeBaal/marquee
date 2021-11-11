@@ -6,7 +6,7 @@ export const CategoryStore = writable([]);
 
 export const initCategoryStore = async () => {
   try {
-    const res = await axios.get(`${API_PREFIX}/categories`);
+    const res = await axios.get(`${API_PREFIX}/api/v1/categories`);
     CategoryStore.set(res.data.data);
   } catch (err) {
     console.error(err);

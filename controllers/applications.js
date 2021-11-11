@@ -9,7 +9,10 @@ const uuidv4 = v4;
 // @access Public
 exports.getAllApplications = async (req, res, _next) => {
   try {
-    let containers = await getDockerContainers();
+    let containers = [];
+    if (process.env.USE_DOCKER == "true") {
+      containers = await getDockerContainers();
+    }
 
     let applications = await Application.findAll({
       include: {
@@ -48,8 +51,9 @@ exports.getOneApplication = async (req, res, _next) => {
 // @access Public
 exports.addApplication = async (req, res, _next) => {
   try {
-    const { name, url, icon, iconType, tag, CategoryId, active, hidden } = req.body;
-
+    const { name, url, icon, iconType, tag, active, hidden } = req.body;
+    const categoryName = req.body.Category;
+    console.log(req.body)
     if (!name || name.length == 0) {
       res.status(400).json({ success: false, reason: 'Application name required' });
       return;
@@ -57,6 +61,16 @@ exports.addApplication = async (req, res, _next) => {
     if (!url || url.length == 0) {
       res.status(400).json({ success: false, reason: 'Application url required' });
       return;
+    }
+
+    let CategoryId;
+    if (categoryName) {
+      let category = await Category.findOne({
+        where: { name: categoryName },
+        attributes: ['id']
+      });
+
+      CategoryId = category.dataValues.id;
     }
 
     let newApplication = {
@@ -70,7 +84,6 @@ exports.addApplication = async (req, res, _next) => {
       active,
       hidden
     };
-    console.log(newApplication)
     newApplication = await Application.create(newApplication);
     res.status(201).json({ success: true, data: newApplication });
 
@@ -105,7 +118,7 @@ exports.updateApplication = async (req, res, _next) => {
     if (numUpdated == 0) {
       res.status(400).json({ success: false, data: 'Invalid applicationId' });
     } else {
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, application });
     }
   } catch (err) {
     console.error(err);
@@ -127,7 +140,7 @@ exports.deleteApplication = async (req, res, _next) => {
     if (numDeleted == 0) {
       res.status(400).json({ success: false, data: 'Invalid applicationId' });
     } else {
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, data: id });
     }
   } catch (err) {
     console.error(err);

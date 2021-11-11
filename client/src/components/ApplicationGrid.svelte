@@ -1,6 +1,8 @@
 <script>
+import axios from 'axios';
+
 	import { onMount } from 'svelte';
-import { SvelteElement } from 'svelte/internal';
+  import { API_PREFIX } from '../config';
 	import { ApplicationStore, initApplicationStore } from '../stores/applications';
   import { CategoryStore, initCategoryStore } from '../stores/category';
 
@@ -9,16 +11,25 @@ import { SvelteElement } from 'svelte/internal';
   $: appByCategory = $CategoryStore.map(category => {
     return {
       ...category,
-      applications: $ApplicationStore.filter(app => app.Category.name === category.name)
+      applications: $ApplicationStore.filter(app => app.Category && app.Category.name === category.name)
     };
   });
 
-  console.log(appByCategory);
+  $: appsNoCategory = $ApplicationStore.filter(app => app.Category == null);
 
 	onMount(() => {
 		initApplicationStore();
     initCategoryStore();
 	});
+
+  const handleDeleteApp = async (id) => {
+    const res = await axios.delete(`${API_PREFIX}/api/v1/applications/${id}`);
+    if (res.success) {
+      ApplicationStore.update(applications => {
+        return applications.filter(app => app.id != res.data);
+      });
+    }
+  }
 </script>
 
 <div class="applications-container">
@@ -32,18 +43,37 @@ import { SvelteElement } from 'svelte/internal';
         {#each category.applications as app (app.id)}
           <div class="card" on:click={() => window.open(app.url, "_blank")}>
             {#if app.icon}
-              <img class="app-icon" src={`http://172.21.0.2:5150/assets/${app.icon}`} alt={app.name}>
+              <img class="app-icon" src={`${API_PREFIX}/assets/${app.icon}`} alt={app.name}>
             {/if}
             <div>
               <span class="app-name">{app.name}</span>
               <!-- <span class="app-link">{app.url.slice(8)}</span> -->
               <span class="app-link">{app.Category.name}</span>
             </div>
+            <button on:click|stopPropagation={() => handleDeleteApp(app.id)}>X</button>
           </div>
         {/each}
       </div>
     </div>
   {/each}
+  <div>
+    <h3>
+      <span>Other</span>
+    </h3>
+    <div class="applications-container">
+      {#each appsNoCategory as app (app.id)}
+        <div class="card" on:click={() => window.open(app.url, "_blank")}>
+          {#if app.icon}
+            <img class="app-icon" src={`${API_PREFIX}/assets/${app.icon}`} alt={app.name}>
+          {/if}
+          <div>
+            <span class="app-name">{app.name}</span>
+          </div>
+          <button on:click|stopPropagation={() => handleDeleteApp(app.id)}>X</button>
+        </div>
+      {/each}
+    </div>
+  </div>
 </div>
 
 <style>
