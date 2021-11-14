@@ -9,8 +9,10 @@
 		.map(([key, value]) => `--${key}:${value}`)
 		.join(';');
 
-	window.document.body.style.background = $ThemeStore.background;
-	window.document.body.style.color = $ThemeStore.text;
+	$: {
+		window.document.body.style.background = $ThemeStore.background;
+		window.document.body.style.color = $ThemeStore.text;
+	}
 
 	onMount(async () => {
     initConfigStore();
