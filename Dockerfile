@@ -4,14 +4,9 @@ WORKDIR /usr/app
 
 COPY package.json .
 COPY package-lock.json .
-RUN npm install --production
-
-COPY client/package.json client/.
-COPY client/package-lock.json client/.
-RUN npm --prefix client install --production
-
+RUN npm install
 COPY . .
 
-RUN npm run --prefix client build
+RUN npm run build
 
 CMD ["npm", "run", "start"]

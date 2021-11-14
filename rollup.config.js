@@ -31,10 +31,22 @@ function serve() {
 export default {
 	input: 'src/main.js',
 	output: {
+		// sourcemap: true,
+		// format: 'iife',
+		// name: 'app',
+		// file: 'public/build/bundle.js'
 		sourcemap: true,
-		format: 'iife',
+		format: 'es',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		dir: 'public/build/',
+		manualChunks: (moduleName) => {
+			if (moduleName.includes("node_modules")) {
+					return "vendor"
+			}
+			if (moduleName.includes("src/components/") || moduleName.includes("src\\components\\")) {
+					return "webapp"
+			}
+ 		},
 	},
 	plugins: [
 		svelte({
