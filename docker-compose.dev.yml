@@ -1,33 +1,13 @@
 version: "2"
 services:
-  server:
+  client:
     image: "node:14-alpine"
     working_dir: /home/node/app
     environment:
       - NODE_ENV=dev
-      - PORT=5150
-      - USE_DOCKER=true
     volumes:
-      - ./:/home/node/app
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ../pi-hosted/images:/images
-    ports:
-      - 5150:5150
-    command: "npm run start"
-    labels:
-      - marquee.name=marquee
-      - marquee.category=Server
-      - marquee.url=https://marquee.local.lukebserver.net
-
-  client:
-    image: "node:14-alpine"
-    working_dir: /home/node/app/client
-    environment:
-      - NODE_ENV=dev
-    volumes:
-      - ./client:/home/node/app/client
+      - .:/home/node/app
+      - ../pi-hosted/images:/home/node/app/public/assets/tools
     ports:
       - 5000:5000
     command: "npm run dev"
-    depends_on:
-      - server

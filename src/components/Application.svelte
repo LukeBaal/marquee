@@ -1,11 +1,11 @@
 <script>
   import { onMount } from 'svelte';
-  export let application;
+  export let app;
   let Component;
 
   onMount(async () => {
     try {
-      const type = application.type || "Generic";
+      const type = app.type || "Generic";
       switch (type) {
         case "PiHole":
           Component = (await import('./services/PiHole.svelte')).default;
@@ -21,5 +21,5 @@
 </script>
 
 <div>
-  <svelte:component this={Component} {...application}/>
+  <svelte:component this={Component} app={app}/>
 </div>

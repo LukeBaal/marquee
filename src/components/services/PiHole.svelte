@@ -1,24 +1,16 @@
 <script>
   import { onMount } from 'svelte';
 
-  export let name;
-  export let url;
-  export let target;
-  export let logo;
-  export let icon;
-  export let subtitle;
-  export let tag;
-  export let endpoint;
+  export let app;
 
   let blocked = -1;
 
   onMount(async () => {
     try {
-      if (!url || subtitle) {
+      if (!app.url || app.subtitle) {
         return;
       }
-      const apiUrl = `${endpoint || url}/api.php`;
-      console.log(apiUrl);
+      const apiUrl = `${app.endpoint || app.url}/api.php`;
       const res = await fetch(apiUrl, {
         credentials: "include"
       });
@@ -32,18 +24,18 @@
 
 </script>
 
-<div class="card" on:click={() => window.open(url, target || "")}>
-  {#if logo}
+<div class="card" on:click={() => window.open(app.url, app.target || "")}>
+  {#if app.logo}
     <div style="margin-right: 0.5em">
       <div class="img-container">
-        <img class="app-icon" src={`${logo}`} alt={name}>
+        <img class="app-icon" src={`${app.logo}`} alt={app.name}>
       </div>
     </div>
-  {:else if icon}
-    <i class={icon}></i>
+  {:else if app.icon}
+    <i class={app.icon}></i>
   {/if}
   <div class="content">
-    <span class="app-name">{name}</span>
+    <span class="app-name">{app.name}</span>
     <!-- <span class="app-link">{url.slice(8)}</span>  -->
     {#if blocked !== -1}
       <span class="app-link">{blocked}% Blocked</span>

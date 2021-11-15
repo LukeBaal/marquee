@@ -1,25 +1,19 @@
 <script>
-  export let name;
-  export let url;
-  export let target;
-  export let logo;
-  export let icon;
-  export let subtitle;
-  export let tag;
+  export let app
 </script>
 
-<div class="card" on:click={() => window.open(url, target || "")}>
-  {#if logo}
+<div class="card" on:click={() => window.open(app.url, app.target || "")}>
+  {#if app.logo}
     <div style="margin-right: 0.5em">
       <div class="img-container">
-        <img class="app-icon" src={`${logo}`} alt={name}>
+        <img class="app-icon" src={`${app.logo}`} alt={app.name}>
       </div>
     </div>
-  {:else if icon}
-    <i class={icon}></i>
+  {:else if app.icon}
+    <i class={app.icon}></i>
   {/if}
   <div class="content">
-    <span class="app-name">{name}</span>
+    <span class="app-name">{app.name}</span>
     <!-- <span class="app-link">{url.slice(8)}</span>  -->
     <!-- {#if subtitle}
       <span class="app-link">{subtitle}</span>

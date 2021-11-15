@@ -12,7 +12,7 @@
       </h3>
       <div class="applications-container">
         {#each category.items as app (app.name)}
-          <Application application={app}/>
+          <Application app={app}/>
         {/each}
       </div>
     </div>
