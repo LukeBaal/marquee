@@ -2,6 +2,7 @@
 	import '@fortawesome/fontawesome-free/js/all.js'
 	import { onMount } from 'svelte';
 	import ApplicationGrid from './components/ApplicationGrid.svelte';
+	import LinkGrid from './components/LinkGrid.svelte';
 	import { initConfigStore } from './stores/config';
 	import { ThemeStore } from './stores/theme';
 
@@ -10,7 +11,14 @@
 		.join(';');
 
 	$: {
-		window.document.body.style.background = $ThemeStore.background;
+		if (!$ThemeStore["background-image"]) {
+			window.document.body.style.background = $ThemeStore.background;
+		} else {
+			window.document.body.style.background = $ThemeStore.background;
+			window.document.body.style.backgroundImage = $ThemeStore["background-image"];
+			window.document.body.style.backgroundRepeat = "no-repeat";
+			window.document.body.style.backgroundSize = "cover";
+		}
 		window.document.body.style.color = $ThemeStore.text;
 	}
 
@@ -21,6 +29,7 @@
 
 <main class="main-container" style={cssVarStyles}>
 	<ApplicationGrid />
+	<LinkGrid />
 </main>
 
 <style>

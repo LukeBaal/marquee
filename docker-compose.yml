@@ -1,7 +1,7 @@
 version: "2"
 services:
   app:
-    image: lukebaal/marquee:1636985507
+    image: ghcr.io/lukebaal/marquee:latest
     ports:
       - 5051:5000
     volumes:

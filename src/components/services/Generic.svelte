@@ -10,7 +10,11 @@
       </div>
     </div>
   {:else if app.icon}
-    <i class={app.icon}></i>
+    <div class="img-container">
+      <div class="app-icon">
+        <i class={`${app.icon}`} style="color: var(--secondary); font-size: 25px"></i>
+      </div>
+    </div>
   {/if}
   <div class="content">
     <span class="app-name">{app.name}</span>
@@ -44,6 +48,7 @@
   height: 32px;
 	display: flex;
   align-items: center;
+  margin-right: 0.2em;
 }
 
 .app-icon {
