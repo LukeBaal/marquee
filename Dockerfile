@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN apk --no-cache --virtual build-dependencies add python make g++ \
-    && npm install --production
+    && npm install
 
 COPY . .
 
@@ -17,8 +17,8 @@ COPY --from=builder /app /app
 
 WORKDIR /app
 
-EXPOSE 5051
+EXPOSE 5000
 
 ENV NODE_ENV=production
 
-CMD ["node", "run", "start"]
+CMD ["npm", "run", "start"]

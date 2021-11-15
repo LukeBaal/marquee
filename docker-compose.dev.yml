@@ -7,7 +7,6 @@ services:
       - NODE_ENV=dev
     volumes:
       - .:/home/node/app
-      - ../pi-hosted/images:/home/node/app/public/assets/tools
     ports:
       - 5000:5000
     command: "npm run dev"
