@@ -5,7 +5,12 @@ export const ConfigStore = writable({});
 
 const getConfig = async (path) => {
   try {
-    const response = await fetch(path);
+    const response = await fetch(path, {
+      headers: {
+        "pragma": "no-cache",
+        "cache-control": "no-store"
+      }
+    });
     if (response.redirected) {
       window.location.href = response.url;
       return;
