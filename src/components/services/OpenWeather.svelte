@@ -48,7 +48,7 @@
 
 <Generic app={weatherApp}>
   <img slot="logo" class={`app-icon ${weatherApp.background}`} src={weatherApp.logo} alt={weatherApp.logoAlt}>
-  <span slot="content">Temp: {tempSuffix(weatherApp.temp, weatherApp.units)}</span>
+  <span slot="content" class="app-link">{tempSuffix(weatherApp.temp, weatherApp.units)}</span>
 </Generic>
 
 <style>

@@ -27,7 +27,7 @@
 <Generic app={app}>
   <span slot="content">
     {#if download && upload}
-      <div style="display: flex; justify-content: space-evenly">
+      <div class="app-link" style="display: flex; justify-content: space-evenly">
         <span>
           <i class="fas fa-arrow-down"></i> {download}
         </span>

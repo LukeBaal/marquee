@@ -66,7 +66,7 @@
 	margin: 0;
 }
 
-.app-link {
+:global(.app-link) {
 	color: var(--secondary);
 	max-width: 100%;
 }
