@@ -6,18 +6,23 @@
   {#if app.logo}
     <div style="margin-right: 0.5em">
       <div class="img-container">
-        <img class="app-icon" src={`${app.logo}`} alt={app.name}>
+        <slot name="logo">
+          <img class="app-icon" src={`${app.logo}`} alt={app.logoAlt || app.name}>
+        </slot>
       </div>
     </div>
   {:else if app.icon}
     <div class="img-container">
       <div class="app-icon">
-        <i class={`${app.icon}`} style="color: var(--secondary); font-size: 25px"></i>
+        <slot name="icon">
+          <i class={`${app.icon}`} style="color: var(--secondary); font-size: 25px"></i>
+        </slot>
       </div>
     </div>
   {/if}
   <div class="content">
     <span class="app-name">{app.name}</span>
+    <slot name="content"></slot>
     <!-- <span class="app-link">{url.slice(8)}</span>  -->
     <!-- {#if subtitle}
       <span class="app-link">{subtitle}</span>
@@ -51,7 +56,7 @@
   margin-right: 0.2em;
 }
 
-.app-icon {
+:global(.app-icon) {
   display: block;
 	width: 100%;
 	height: auto;

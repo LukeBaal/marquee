@@ -10,6 +10,9 @@
         case "PiHole":
           Component = (await import('./services/PiHole.svelte')).default;
           break;
+        case "OpenWeather":
+          Component = (await import('./services/OpenWeather.svelte')).default;
+          break;
         default:
           Component = (await import('./services/Generic.svelte')).default;
           break;

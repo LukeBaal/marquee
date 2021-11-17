@@ -2,11 +2,11 @@ version: "2"
 services:
   client:
     image: "node:14-alpine"
-    working_dir: /home/node/app
+    working_dir: /app
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=dev@
     volumes:
-      - .:/home/node/app
+      - .:/app
     ports:
       - 5000:5000
     command: "npm run dev"
