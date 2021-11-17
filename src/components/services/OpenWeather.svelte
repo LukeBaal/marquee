@@ -18,10 +18,9 @@
 
   onMount(async () => {
     try {
-      // if (app.subtitle || !app.locationId || !app.apiKey || !app.units) {
-      //   return;
-      // }
-      console.log(app)
+      if (app.subtitle) {
+        return;
+      }
       let locationQuery;
       if (app.locationId) {
         locationQuery = `id=${app.locationId}`;

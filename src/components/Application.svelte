@@ -13,6 +13,9 @@
         case "OpenWeather":
           Component = (await import('./services/OpenWeather.svelte')).default;
           break;
+        case "SpeedtestTracker":
+          Component = (await import('./services/SpeedtestTracker.svelte')).default;
+          break;
         default:
           Component = (await import('./services/Generic.svelte')).default;
           break;
