@@ -1,20 +1,10 @@
 <script>
   import { onMount } from 'svelte';
   import Generic from './Generic.svelte';
+  import { tempSuffix } from '../../utils';
 
   export let app;
   let weatherApp = app;
-
-  const tempSuffix = (value, type) => {
-      if (!value) return "";
-      let unit = "K";
-      if (type === "metric") {
-        unit = "°C";
-      } else if (type === "imperial") {
-        unit = "°F";
-      }
-      return `${value} ${unit}`;
-    }
 
   onMount(async () => {
     try {

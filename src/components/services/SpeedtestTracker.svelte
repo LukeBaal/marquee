@@ -27,14 +27,20 @@
 <Generic app={app}>
   <span slot="content">
     {#if download && upload}
-      <div class="app-link" style="display: flex; justify-content: space-evenly">
-        <span>
+      <div class="app-link">
+        <span class="download">
           <i class="fas fa-arrow-down"></i> {download}
         </span>
-        <span>
+        <span class="upload">
           <i class="fas fa-arrow-up"></i> {upload}
         </span>
       </div>
     {/if}
   </span>
 </Generic>
+
+<style>
+  .download {
+    margin-right: 0.2em;
+  }
+</style>

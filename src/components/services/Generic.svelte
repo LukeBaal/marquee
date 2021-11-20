@@ -12,7 +12,7 @@
       </div>
     </div>
   {:else if app.icon}
-    <div class="img-container">
+    <div class="img-container" style="margin-right: 0.5em">
       <div class="app-icon">
         <slot name="icon">
           <i class={`${app.icon}`} style="color: var(--secondary); font-size: 25px"></i>
@@ -43,9 +43,15 @@
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
+:global(.card.background) {
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0.2em;
+}
+
 .content {
 	display: flex;
 	flex-direction: column;
+  width: 100%;
 }
 
 .img-container {
@@ -53,7 +59,6 @@
   height: 32px;
 	display: flex;
   align-items: center;
-  margin-right: 0.2em;
 }
 
 :global(.app-icon) {

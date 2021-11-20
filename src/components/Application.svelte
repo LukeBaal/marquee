@@ -16,6 +16,12 @@
         case "SpeedtestTracker":
           Component = (await import('./services/SpeedtestTracker.svelte')).default;
           break;
+        case "Portainer":
+          Component = (await import('./services/Portainer.svelte')).default;
+          break;
+        case "Prometheus":
+          Component = (await import('./services/Prometheus.svelte')).default;
+          break;
         default:
           Component = (await import('./services/Generic.svelte')).default;
           break;
