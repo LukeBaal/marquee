@@ -9,14 +9,13 @@
    version="1.1"
    viewBox="0 0 1024 1024"
    id="svg103"
-   sodipodi:docname="MarqueeIcon.svg"
+   sodipodi:docname="Marquee-mask.svg"
    inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
-   inkscape:export-filename="Marquee-32x32.png"
-   inkscape:export-xdpi="3"
-   inkscape:export-ydpi="3"
+   inkscape:export-filename="/home/luke/Documents/marquee/public/assets/icons/Marquee-maskable.png"
+   inkscape:export-xdpi="48"
+   inkscape:export-ydpi="48"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:vectornator="http://vectornator.io"><sodipodi:namedview
@@ -29,12 +28,12 @@
    inkscape:pagecheckerboard="0"
    showgrid="false"
    inkscape:zoom="0.81206794"
-   inkscape:cx="179.1722"
-   inkscape:cy="530.12806"
-   inkscape:window-width="2259"
+   inkscape:cx="475.9454"
+   inkscape:cy="370.04293"
+   inkscape:window-width="2051"
    inkscape:window-height="1082"
-   inkscape:window-x="346"
-   inkscape:window-y="89"
+   inkscape:window-x="372"
+   inkscape:window-y="94"
    inkscape:window-maximized="0"
    inkscape:current-layer="svg103" />
 <metadata
@@ -89,24 +88,7 @@
    value="0" />
 </metadata>
 <defs
-   id="defs93"><linearGradient
-   y1="526.374"
-   id="linearGradient4869"
-   x1="298.907"
-   y2="526.374"
-   x2="725.093"
-   gradientUnits="userSpaceOnUse"
-   gradientTransform="matrix(1.48446 0 0 1.42975 -234.529 -246.144)">
-<stop
-   stop-color="#6135a1"
-   offset="0"
-   id="stop4865" />
-<stop
-   stop-color="#3a2ba6"
-   offset="1"
-   id="stop4867"
-   style="stop-color:#27214d;stop-opacity:1" />
-</linearGradient>
+   id="defs93">
 <linearGradient
    y1="560.604"
    id="LinearGradient"
@@ -139,52 +121,19 @@
 <stop
    stop-color="#3a2ba6"
    offset="1"
-   id="stop90"
-   style="stop-color:#4c3db7;stop-opacity:1" />
+   id="stop90" />
 </linearGradient>
-<linearGradient
-   inkscape:collect="always"
-   xlink:href="#linearGradient4869"
-   id="linearGradient10406"
-   x1="260.06799"
-   y1="496.33899"
-   x2="760.17999"
-   y2="496.33899"
-   gradientUnits="userSpaceOnUse" /></defs>
-<g
-   id="Layer 1"
-   vectornator:layerName="Layer 1">
-<path
-   stroke="#c6bdbd"
-   stroke-width="0.1"
-   d="M1.53747-23.3595L913.439+947.399"
-   fill="#788494"
-   stroke-linecap="round"
-   opacity="1"
-   stroke-linejoin="round"
-   id="path95" />
-<path
-   stroke="#c6bdbd"
-   stroke-width="0.1"
-   d="M-71.9405+0.0680354L1133.92+0.0680354L1133.92+1121.14L-71.9405+1121.14L-71.9405+0.0680354Z"
-   fill="url(#LinearGradient)"
-   stroke-linecap="round"
-   opacity="1"
-   stroke-linejoin="round"
-   id="path97" />
-</g>
+</defs>
+
 <g
    id="Layer 2"
    vectornator:layerName="Layer 2"
-   style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;opacity:1"
-   inkscape:export-filename="./Layer 2.png"
-   inkscape:export-xdpi="14.0625"
-   inkscape:export-ydpi="14.0625">
+   style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:8.20000124;stroke-miterlimit:4;stroke-dasharray:none">
 <path
    d="M264.168+249.183L363.738+249.183L511.172+667.11L657.557+249.183L756.08+249.183L756.08+743.495L690.049+743.495L690.049+451.753C690.049+441.658+690.282+424.946+690.748+401.616C691.213+378.285+691.446+353.272+691.446+326.577L545.061+743.495L476.235+743.495L328.801+326.577L328.801+341.719C328.801+353.833+329.092+372.284+329.674+397.073C330.257+421.861+330.548+440.088+330.548+451.753L330.548+743.495L264.168+743.495L264.168+249.183Z"
    opacity="1"
    fill="url(#LinearGradient_2)"
    id="path100"
-   style="stroke:#000000;stroke-opacity:1;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-linejoin:round;fill:#ffffff;fill-opacity:1" />
+   style="stroke:#000000;stroke-opacity:1;stroke-width:8.20000124;stroke-miterlimit:4;stroke-dasharray:none;stroke-linejoin:round;fill:#ffffff;fill-opacity:1" />
 </g>
 </svg>

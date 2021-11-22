@@ -1,9 +1,9 @@
 <script>
   export let app;
-  export let onClick;
+  export let onClick = () => window.open(app.url, app.target || "");
 </script>
 
-<div class="card" on:click={onClick || window.open(app.url, app.target || "")}>
+<div class="card" on:click|stopPropagation={onClick}>
   {#if app.logo}
     <div style="margin-right: 0.5em">
       <div class="img-container">

@@ -6,7 +6,7 @@
   export let app;
   let weatherApp = app;
 
-  const goToOpenWeather = () => {
+  const goToOpenWeather = (e) => {
     window.open(`https://openweathermap.org/city/${weatherApp.id}`, app.target || "")
   }
 
