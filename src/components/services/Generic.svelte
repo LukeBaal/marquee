@@ -1,8 +1,9 @@
 <script>
-  export let app
+  export let app;
+  export let onClick;
 </script>
 
-<div class="card" on:click={() => window.open(app.url, app.target || "")}>
+<div class="card" on:click={onClick || window.open(app.url, app.target || "")}>
   {#if app.logo}
     <div style="margin-right: 0.5em">
       <div class="img-container">
@@ -75,4 +76,10 @@
 	color: var(--secondary);
 	max-width: 100%;
 }
+
+:global(.app-link.grid) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 </style>

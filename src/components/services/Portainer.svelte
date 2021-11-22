@@ -66,7 +66,7 @@
 </script>
 
 <Generic app={app}>
-  <span slot="content" class="app-link">
+  <span slot="content" class={`app-link ${app.display || ""}`}>
     {#if api.status === 'enabled'}
       <span class="running">
         <i class="fas fa-play"></i>

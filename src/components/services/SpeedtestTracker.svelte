@@ -25,16 +25,14 @@
 </script>
 
 <Generic app={app}>
-  <span slot="content">
+  <span slot="content" class={`app-link ${app.display || ""}`}>
     {#if download && upload}
-      <div class="app-link">
-        <span class="download">
-          <i class="fas fa-arrow-down"></i> {download}
-        </span>
-        <span class="upload">
-          <i class="fas fa-arrow-up"></i> {upload}
-        </span>
-      </div>
+      <span class="download">
+        <i class="fas fa-arrow-down"></i> {download}
+      </span>
+      <span class="upload">
+        <i class="fas fa-arrow-up"></i> {upload}
+      </span>
     {/if}
   </span>
 </Generic>

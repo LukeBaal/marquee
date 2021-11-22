@@ -65,10 +65,8 @@
 
 </script>
 
-{@debug queryResults}
-
 <Generic app={app}>
-  <span slot="content" class="app-link">
+  <span slot="content" class={`app-link ${app.display || ""}`}>
     {#each queryResults as queryResult}
       {#await queryResult then result}
         <span>
@@ -84,9 +82,6 @@
 .app-link {
 	color: var(--secondary);
 	max-width: 100%;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .statuc-icon {

@@ -6,6 +6,10 @@
   export let app;
   let weatherApp = app;
 
+  const goToOpenWeather = () => {
+    window.open(`https://openweathermap.org/city/${weatherApp.id}`, app.target || "")
+  }
+
   onMount(async () => {
     try {
       if (app.subtitle) {
@@ -36,7 +40,7 @@
   });
 </script>
 
-<Generic app={weatherApp}>
+<Generic app={weatherApp} onClick={goToOpenWeather}>
   <img slot="logo" class={`app-icon ${weatherApp.background}`} src={weatherApp.logo} alt={weatherApp.logoAlt}>
   <span slot="content" class="app-link">{tempSuffix(weatherApp.temp, weatherApp.units)}</span>
 </Generic>
