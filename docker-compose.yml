@@ -2,7 +2,8 @@ version: "2"
 services:
   app:
     image: ghcr.io/lukebaal/marquee:latest
+    container_name: marquee
     ports:
-      - 5051:5000
+      - 5051:80
     volumes:
       - ./public/assets:/app/public/assets
