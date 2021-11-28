@@ -1,16 +1,11 @@
 import { writable } from 'svelte/store';
-import jsyaml from 'js-yaml';
+import { API_PREFIX } from '../config';
 
 export const ConfigStore = writable({});
 
-const getConfig = async (path) => {
+const getConfig = async () => {
   try {
-    const response = await fetch(path, {
-      headers: {
-        "pragma": "no-cache",
-        "cache-control": "no-store"
-      }
-    });
+    const response = await fetch(`${API_PREFIX}/api/config`);
     if (response.redirected) {
       window.location.href = response.url;
       return;
@@ -18,8 +13,13 @@ const getConfig = async (path) => {
     if (!response.ok) {
       throw Error(`${response.statusText}: ${response.body}`);
     }
-    const body = await response.text();
-    return await jsyaml.load(body);
+    const res = JSON.parse(await response.text());
+
+    if (res.success) {
+      return res.data;
+    } else {
+      console.log(`Error loading config: ${res.reason}`);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -27,7 +27,7 @@ const getConfig = async (path) => {
 
 export const initConfigStore = async () => {
   try {
-    const config = await getConfig('assets/config.yml');
+    const config = await getConfig();
     // console.log(config);
     ConfigStore.set(config);
   } catch (err) {

@@ -1,8 +1,8 @@
-version: "2"
+version: "3"
 services:
   app:
     image: ghcr.io/lukebaal/marquee:latest
     ports:
-      - 5051:5000
+      - 5051:5001
     volumes:
-      - ./public/assets:/app/public/assets
+      - ./client/public/assets:/app/public/assets

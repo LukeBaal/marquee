@@ -3,24 +3,24 @@ FROM node:14-alpine3.11 as builder
 WORKDIR /app
 
 COPY package*.json ./
+COPY client/package*.json ./client/
 
 RUN apk --no-cache --virtual build-dependencies add python make g++ \
-    && npm install
+    && npm install \
+    && npm --prefix client install
 
 COPY . .
 
-RUN npm run build
+RUN npm run --prefix client build
 
 FROM node:14-alpine3.11
-
-RUN apk add --no-cache darkhttpd
 
 COPY --from=builder /app /app
 
 WORKDIR /app
 
-EXPOSE 5000
+EXPOSE 5001
 
 ENV NODE_ENV=production
 
-CMD ["darkhttpd", "public", "--no-listing"]
+CMD ["npm", "run", "start"]

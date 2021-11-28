@@ -1,12 +1,23 @@
 version: "3"
+
 services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - .:/app
+    depends_on:
+      - client
   client:
     image: "node:14-alpine"
-    working_dir: /app
+    working_dir: /app/client
     environment:
       - NODE_ENV=dev
     volumes:
-      - .:/app
+      - ./client:/app/client
     ports:
       - 5000:5000
     command: "npm run dev"

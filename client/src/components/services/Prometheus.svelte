@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import Generic from './Generic.svelte';
   import { tempSuffix } from '../../utils';
+  import { API_PREFIX } from '../../config';
 
   export let app;
 
@@ -15,14 +16,11 @@
 
       queryResults = await app.queries.map(async (query) => {
         const path = (query.path || "data.result.0.value.1").split('.');
-        const apiUrl = `${app.endpoint || app.url}/api/v1/query?query=${query.query}`;
-        const res = await fetch(apiUrl, {
-          headers: {
-            Authorization: `Bearer ${app.apikey}`
-          }
-        });
-        const data = await res.json();
-        let result = data;
+        // const apiUrl = `${app.endpoint || app.url}/api/v1/query?query=${query.query}`;
+        const apiUrl = `${API_PREFIX}/api?type=PROMETHEUS&query=${query.query}&includeAuthHeader=true`;
+        const rawResponse = await fetch(apiUrl);
+        const res = await rawResponse.json();
+        let result = res;
         await path.forEach(item => {
           if (!isNaN(parseInt(item))) {
             result = result[parseInt(item)];

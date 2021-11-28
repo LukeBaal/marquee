@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import Generic from './Generic.svelte';
   import { tempSuffix } from '../../utils';
+  import { API_PREFIX } from '../../config';
 
   export let app;
   let weatherApp = app;
@@ -22,7 +23,8 @@
         locationQuery = `q=${app.location}`;
       }
 
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?${locationQuery}&appid=${app.apikey}&units=${app.units}`;
+      // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?${locationQuery}&appid=${app.apikey}&units=${app.units}`;
+      const apiUrl = `${API_PREFIX}/api?${locationQuery}&units=${app.units}&type=OPEN_WEATHER`
       const res = await fetch(apiUrl);
       const data = await res.json();
       weatherApp = {
