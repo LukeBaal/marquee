@@ -72,7 +72,7 @@ const fetchPortainerToken = async () => {
   }
 }
 
-router.get('/portainer', async (req, res) => {
+router.get('/portainer', cache('2 minutes'), async (req, res) => {
   try {
     const token = await fetchPortainerToken();
     const url = `${process.env.PORTAINER_URL}/api/endpoints?limit=100&start=0`;
