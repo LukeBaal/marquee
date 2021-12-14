@@ -1,6 +1,6 @@
 <script>
   import { ConfigStore } from '../stores/config';
-  import Generic from './services/Generic.svelte';
+  import Link from './Link.svelte';
 </script>
 
 <div style="margin-top: 2em">
@@ -11,7 +11,7 @@
   <div class="link-container">
     {#if $ConfigStore.links}
       {#each $ConfigStore.links as link (link.name)}
-        <Generic app={link}/>
+        <Link app={link}/>
       {/each}
     {/if}
   </div>
@@ -20,6 +20,6 @@
 <style>
 .link-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
 }
 </style>
