@@ -40,5 +40,6 @@
 	border-radius: 3px;
 	padding: 1em;
 	backdrop-filter: var(--container-backdrop-filter, initial);
+	-webkit-backdrop-filter: var(--container-backdrop-filter, initial);
 }
 </style>
