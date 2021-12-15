@@ -3,7 +3,7 @@
   import Application from './Application.svelte';
 </script>
 
-<div class="applications-container">
+<div class="container applications-container">
   {#each $CategoryStore as category (category.name)}
     <div>
       <h3>

@@ -8,9 +8,7 @@ export const ThemeStore = derived(ConfigStore, $ConfigStore => {
 
   return {
     background: "#0a122a",
-    primary: "#698f3f",
     text: "#fbfaf8",
-    'background-light': "#e7decd",
     secondary: "#dd8981"
   }
 });

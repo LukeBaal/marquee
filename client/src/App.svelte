@@ -11,14 +11,7 @@
 		.join(';');
 
 	$: {
-		if (!$ThemeStore["background-image"]) {
-			window.document.body.style.background = $ThemeStore.background;
-		} else {
-			window.document.body.style.background = $ThemeStore.background;
-			window.document.body.style.backgroundImage = $ThemeStore["background-image"];
-			window.document.body.style.backgroundRepeat = "no-repeat";
-			window.document.body.style.backgroundSize = "cover";
-		}
+		window.document.body.style.background = $ThemeStore.background;
 		window.document.body.style.color = $ThemeStore.text;
 	}
 
@@ -40,5 +33,12 @@
 .main-container {
 	margin: 2em;
 	border-top: 2px solid var(--secondary);
+}
+
+:global(.container) {
+	background: var(--container-background, initial);
+	border-radius: 3px;
+	padding: 1em;
+	backdrop-filter: var(--container-backdrop-filter, initial);
 }
 </style>
